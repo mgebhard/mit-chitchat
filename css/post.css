@@ -1,0 +1,41 @@
+.content_left{
+	position: relative;
+	z-index: 1;
+	float: left;
+	top: 50px;
+	left: 80px;
+	padding-left: 50px;
+	width: 550px;
+	border: 1px black solid; 
+	border-radius: 15px;
+    background-image: url('/pictures/old_moon.png');
+    background-repeat: repeat;
+    background-attachment: fixed;
+}
+
+.content_left input, .content_left select{
+	position: relative;
+	float: right;
+	margin-right: 90px;
+}
+
+.content_left .input{
+	position: relative;
+	padding: 10px;
+	margin-bottom: 10px;
+ 	vertical-align: middle;
+
+}
+
+.content_left .input input{
+	height: 22px;
+	vertical-align: middle;
+}
+
+.input_title{
+	display: inline;
+	font-size: 22px;
+	vertical-align: middle;
+	font-family: 'Poiret One', cursive;
+	font-variant: bold;
+}

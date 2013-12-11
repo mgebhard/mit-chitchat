@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/home.css">
+	<link rel="stylesheet" type="text/css" href="/css/header.css">
+	<link rel="stylesheet" type="text/css" href="/css/right_content.css">
+	<link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Ribeye+Marrow' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet' type='text/css'>
+	<link rel="shortcut icon" href="/pictures/mit.ico" >
+	<title> MIT ChitChat</title>
+
+	 <script type="text/javascript">
+		var image1 = new Image()
+		image1.src = "/pictures/mit1.jpg"
+		var image2 = new Image()
+		image2.src = "/pictures/mit2.jpg"
+		var image3 = new Image()
+		image3.src = "/pictures/mit3.jpg"
+		var image4 = new Image()
+		image4.src = "/pictures/mit4.jpg"
+    </script>
+
+</head>
+	<body>
+		<div class='header'>
+			<div class='title'>
+
+			<a href='/'> MIT
+				<span class='upper'>C</span><span class='lower'>HIT</span>
+				<span class='upper'>C</span><span class='lower'>HAT</span>
+			</a>
+			</div>
+
+			<div class='nav'>
+					<a href='/post'> Post it</a>				
+			</div>
+			
+		</div>
+
+		<div class='container'>
+			<div class='content_left'>
+			{% for post in all_posts %}
+	    		<div class='posts'> 
+	    			<div class='top'>
+	    			<span id='class_number'>{{post.mit_class}}</span>
+	    			<span id='professor'> ({{post.professor}}) </span>
+	    			<span id='date'>{{post.date.strftime('%b. %d, %Y')}}</span> 
+	    			</div>
+
+	    			<div class='topic'>
+	    			<span class='subject'>{{post.topic}} </span>
+	    			{% for i in range(post.rating) %}
+	    				<img width='20px' heigth='20px' src='/pictures/star.png'>
+	    			{% endfor %}
+	    			</div>
+
+	    			<div class='summary'>
+	    			<span class='username'>{{post.user}}:</span><br>
+	    			{{post.summary}}</div> 
+
+	    		</div>
+	    	{% endfor %}
+	    	</div> 
+	    	<div class='content_right'>
+	    		<div class='about'>
+		    		<span class='text'>Welcome to MIT ChitChat!</span><br>
+		    		<span class='info'>Tell everyone about what you liked and disliked about your lectures, and take a look at what other people have said about their lectures. First add your classes and then click "Post it" to rate your lecture!</span>
+	    		</div>	
+
+	    		<div class='usr_classes'>
+	    			<span class='text'>Current Classes:</span>
+	    			{% for class in usr_classes %}
+		    			<br><span class='text'><a href='/class?class={{class}}'>{{class}}</span></a>
+		    			<a class='remove' href='/remove?class={{class}}'>(x)</a>
+	    			{% endfor %}
+
+	    			<form id='lecture' method='post' action='/class'>
+						<span class='input_title'><label>Add Class: </label></span>
+						<input id='class' class='move' type='text' name='class'>
+						<button type='submit'>Add</button>
+					</form>
+				</div>
+
+				<div class='search'>
+					<form id='lecture' method='get' action='/class'>
+						<span class='input_title'><label>Search: </label></span>
+						<input class='move' id='class' type='text' name='class'>
+						<button type='submit'>Go</button>
+					</form>
+				</div>
+
+				<div class='image'>
+					<img src="/pictures/mit1.jpg" id="imageslide" name="slide" />
+		        	<script type="text/javascript">
+		            var step=1;
+		            function slideit()
+		            {
+		              document.images.slide.src = eval("image"+step+".src");
+		              if(step<4)
+		                step++;
+		              else
+		                step=1;
+		              setTimeout("slideit()", 2500);
+		            }
+		            slideit();
+		        	</script>
+				</div>
+	    	</div>
+		</div>
+	</body>
+</html> 
+
+<!-- Picture Sources:
+https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&docid=7LmkDx0owFSUyM&tbnid=3sLl8JiY4WBDyM:&ved=0CAUQjRw&url=http%3A%2F%2Fwww.geek.com%2Fnews%2Fcomcast-and-mit-to-test-live-television-over-ip-1384203%2F&ei=-JebUtSHEs3hsASWk4GoCA&bvm=bv.57155469,d.cWc&psig=AFQjCNFMw3CIxTgryqlxM0HQSjP3idZJFA&ust=1386015093351789 
+http://www.google.com/url?sa=i&source=images&cd=&cad=rja&docid=OgQYcsPgbQKNlM&tbnid=I5erjVgOo3ZyYM:&ved=0CAgQjRwwAA&url=http%3A%2F%2Fen.wikipedia.org%2Fwiki%2FMassachusetts_Institute_of_Technology&ei=Np2bUouoKfDksASj-4HAAg&psig=AFQjCNGwmRxs9bSlBIX6XxgTm3nFJKB8OA&ust=1386016438740260
+-->
